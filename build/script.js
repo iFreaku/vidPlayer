@@ -82,7 +82,7 @@ document.getElementById('subtitleInput').addEventListener('change', function(eve
 window.onkeydown = vidCtrl;
 
 function vidCtrl(e) {
-  const vid = document.querySelector('videoPlayer');
+  const vid = document.getElementById('videoPlayer');
   const key = e.code;
 
   if (key === 'ArrowLeft') {
