@@ -2,31 +2,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100vh;
     background-color: #121212;
     color: #ffffff;
     font-family: Arial, sans-serif;
-    margin: 10px;
     overflow: hidden;
     position: relative;
+    margin: 0;
 }
 
 .video-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #1e1e1e;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    max-width: 800px;
     z-index: 10;
 }
+
 
 video {
     width: 100%;
     max-width: 800px;
     border-radius: 10px;
+    position: relative;
 }
 
 .icon-button, .control-button {
@@ -72,35 +73,39 @@ video::cue {
 .inner-container {
     display: inline-block;
     position: relative;
+    justify-content: center;
 }
 
 #details {
-    position: absolute;
-    left: 0px;
-    top: 0px;
+    position: absolute !important;
+    left: 0px !important;
+    top: -70px !important;
     margin: 10px;
     padding: 5px;
     font-size: 20px;
     color: #FFF;
     opacity: 1;
     transition: opacity 0.5s ease;
-    text-align: left;
+    text-align: left !important;
 }
 
-#ambientOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+
+
+canvas {
+    border-radius: 10px;
+    position: absolute;
+    filter: blur(30px);
+    opacity: 0.5;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.video-container {
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 70%);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 5;
-    transition: opacity 0.5s ease;
-}
-
-#ambientOverlay.active {
-    opacity: 1;
-    pointer-events: auto;
+    position: relative;
 }
