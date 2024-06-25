@@ -1,3 +1,5 @@
+
+
 function loadVideo(video) {
     const videoPlayer = document.getElementById('videoPlayer');
     const vidTitle = document.getElementById('vidTitle');
@@ -77,7 +79,32 @@ document.getElementById('subtitleInput').addEventListener('change', function(eve
 });
 
 
+window.onkeydown = vidCtrl;
 
+function vidCtrl(e) {
+  const vid = document.querySelector('videoPlayer');
+  const key = e.code;
+
+  if (key === 'ArrowLeft') {
+    vid.currentTime -= 5;
+    if (vid.currentTime < 0) {
+      vid.pause();
+      vid.currentTime = 0;
+    }
+  } else if (key === 'ArrowRight') {
+    vid.currentTime += 5;
+    if (vid.currentTime > vid.duration) {
+      vid.pause();
+      vid.currentTime = 0;
+    }
+  } else if (key === 'Space') {
+    if (vid.paused || vid.ended) {
+      vid.play();
+    } else {
+      vid.pause();
+    }
+  }
+}
 
 
 let hideTimeout;
