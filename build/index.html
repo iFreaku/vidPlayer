@@ -24,12 +24,12 @@
             
             <input type="file" id="subtitleInput" accept=".vtt, .srt" style="display: none;">
             <label for="subtitleInput" class="icon-button"><i class="fas fa-closed-captioning"></i> Choose Subtitle</label>
+
+            <!-- Ambient Mode Toggle Button -->
+            <button id="ambientModeBtn" class="icon-button"><i class="fas fa-adjust"></i> Toggle Ambient Mode</button>
         </div>
     </div>
-    <div class="video-list">
-        <h2>Previously Loaded Videos</h2>
-        <ul id="videoList"></ul>
-    </div>
+    <div id="ambientOverlay"></div>
     <script src="script.js"></script>
 </body>
 </html>
