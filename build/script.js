@@ -4,10 +4,11 @@ function loadVideoDetails() {
     const videoList = document.getElementById('videoList');
     videoList.innerHTML = '';
     savedVideos.forEach(video => {
-        const li = document.createElement('li');
-        li.textContent = video.name;
-        li.addEventListener('click', () => loadVideo(video));
-        videoList.appendChild(li);
+        const videoItem = document.createElement('div');
+        videoItem.className = 'video-item';
+        videoItem.textContent = video.name;
+        videoItem.addEventListener('click', () => loadVideo(video));
+        videoList.appendChild(videoItem);
     });
 }
 
@@ -125,6 +126,8 @@ document.getElementById('subtitleInput').addEventListener('change', function(eve
 
 const videoPlayer = document.getElementById('videoPlayer');
 const playPauseBtn = document.getElementById('playPauseBtn');
+const rewindBtn = document.getElementById('rewindBtn');
+const forwardBtn = document.getElementById('forwardBtn');
 const seekBar = document.getElementById('seekBar');
 const muteBtn = document.getElementById('muteBtn');
 const volumeBar = document.getElementById('volumeBar');
@@ -139,6 +142,16 @@ playPauseBtn.addEventListener('click', function() {
         videoPlayer.pause();
         playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
     }
+});
+
+// Rewind button functionality
+rewindBtn.addEventListener('click', function() {
+    videoPlayer.currentTime -= 10;
+});
+
+// Forward button functionality
+forwardBtn.addEventListener('click', function() {
+    videoPlayer.currentTime += 10;
 });
 
 // Update seek bar as the video plays
@@ -208,4 +221,3 @@ document.getElementById('hover').addEventListener('mouseout', () => {
     hideTimeout = setTimeout(hideElement, 1000);
 });
 hideTimeout = setTimeout(hideElement, 1000);
-
