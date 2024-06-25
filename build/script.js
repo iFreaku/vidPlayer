@@ -156,7 +156,6 @@ forwardBtn.addEventListener('click', function() {
 
 // Update seek bar as the video plays
 videoPlayer.addEventListener('timeupdate', function() {
-    seekBar.value = videoPlayer.currentTime;
     const vidTitle = document.getElementById('vidTitle').textContent;
     let savedVideos = JSON.parse(localStorage.getItem('videos')) || [];
     const videoIndex = savedVideos.findIndex(video => video.name === vidTitle);
@@ -165,6 +164,7 @@ videoPlayer.addEventListener('timeupdate', function() {
         localStorage.setItem('videos', JSON.stringify(savedVideos));
     }
 });
+
 
 // Seek bar functionality
 seekBar.addEventListener('input', function() {
