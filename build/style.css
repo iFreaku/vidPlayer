@@ -96,7 +96,7 @@ canvas {
     position: absolute;
     filter: blur(50px);
     opacity: 0.5;
-    transform: translate(-4.5%, -5%);
+    transform: translate(-30px, -21px);
     width: 110% !important;
     height: 110% !important;
 }
