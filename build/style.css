@@ -18,8 +18,8 @@ body {
     align-items: center;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 10;
+    max-height: auto !important;
 }
 
 
@@ -45,7 +45,7 @@ video {
 }
 
 .icon-button:hover, .control-button:hover {
-    background-color: #555;
+    background-color: #5555556e;
 }
 
 .icon-button i, .control-button i {
@@ -92,16 +92,17 @@ video::cue {
 
 
 canvas {
-    border-radius: 10px;
+    border-radius: 5px;
     position: absolute;
-    filter: blur(30px);
+    filter: blur(50px);
     opacity: 0.5;
-    width: 100% !important;
-    height: 100% !important;
+    transform: translate(-4.5%, -5%);
+    width: 110% !important;
+    height: 110% !important;
 }
 
 .video-container {
-    background: #0a0a0a;
+    background: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
