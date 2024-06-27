@@ -1,123 +1,123 @@
 
 
 function loadVideo(video) {
-    const videoPlayer = document.getElementById('videoPlayer');
-    const vidTitle = document.getElementById('vidTitle');
-    const vidDuration = document.getElementById('vidDuration');
+  const videoPlayer = document.getElementById('videoPlayer');
+  const vidTitle = document.getElementById('vidTitle');
+  const vidDuration = document.getElementById('vidDuration');
 
-    videoPlayer.src = video.url;
-    vidTitle.textContent = video.name;
-    videoPlayer.currentTime = video.currentTime;
-    videoPlayer.load();
+  videoPlayer.src = video.url;
+  vidTitle.textContent = video.name;
+  videoPlayer.currentTime = video.currentTime;
+  videoPlayer.load();
 
-    if (video.subtitleURL) {
-        const track = document.createElement('track');
-        track.kind = 'subtitles';
-        track.src = video.subtitleURL;
-        track.srclang = 'en';
-        track.label = 'English';
-        track.default = true;
-        videoPlayer.appendChild(track);
-        videoPlayer.textTracks[0].mode = 'showing';
-    }
+  if (video.subtitleURL) {
+      const track = document.createElement('track');
+      track.kind = 'subtitles';
+      track.src = video.subtitleURL;
+      track.srclang = 'en';
+      track.label = 'English';
+      track.default = true;
+      videoPlayer.appendChild(track);
+      videoPlayer.textTracks[0].mode = 'showing';
+  }
 
-    videoPlayer.onloadedmetadata = function() {
-        const duration = videoPlayer.duration;
-        const hours = Math.floor(duration / 3600);
-        const minutes = Math.floor((duration % 3600) / 60);
-        const seconds = Math.floor(duration % 60);
-        vidDuration.textContent = `Duration: ${hours}h ${minutes}m ${seconds}s`;
-    };
+  videoPlayer.onloadedmetadata = function() {
+      const duration = videoPlayer.duration;
+      const hours = Math.floor(duration / 3600);
+      const minutes = Math.floor((duration % 3600) / 60);
+      const seconds = Math.floor(duration % 60);
+      vidDuration.textContent = `Duration: ${hours}h ${minutes}m ${seconds}s`;
+  };
 }
 
 document.getElementById('videoInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const videoPlayer = document.getElementById('videoPlayer');
-    const vidTitle = document.getElementById('vidTitle');
-    const vidDuration = document.getElementById('vidDuration');
+  const file = event.target.files[0];
+  const videoPlayer = document.getElementById('videoPlayer');
+  const vidTitle = document.getElementById('vidTitle');
+  const vidDuration = document.getElementById('vidDuration');
 
-    if (file) {
-        const videoURL = URL.createObjectURL(file);
-        const videoName = file.name.split('.').slice(0, -1).join('.');
-        document.title = videoName;
+  if (file) {
+      const videoURL = URL.createObjectURL(file);
+      const videoName = file.name.split('.').slice(0, -1).join('.');
+      document.title = videoName;
 
-        videoPlayer.src = videoURL;
-        videoPlayer.load();
+      videoPlayer.src = videoURL;
+      videoPlayer.load();
 
-        vidTitle.textContent = videoName;
-        videoPlayer.onloadedmetadata = function() {
-            const duration = videoPlayer.duration;
-            const hours = Math.floor(duration / 3600);
-            const minutes = Math.floor((duration % 3600) / 60);
-            const seconds = Math.floor(duration % 60);
-            vidDuration.textContent = `Duration: ${hours}h ${minutes}m ${seconds}s`;
-        };
-    }
+      vidTitle.textContent = videoName;
+      videoPlayer.onloadedmetadata = function() {
+          const duration = videoPlayer.duration;
+          const hours = Math.floor(duration / 3600);
+          const minutes = Math.floor((duration % 3600) / 60);
+          const seconds = Math.floor(duration % 60);
+          vidDuration.textContent = `Duration: ${hours}h ${minutes}m ${seconds}s`;
+      };
+  }
 });
 
 document.getElementById('subtitleInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const videoPlayer = document.getElementById('videoPlayer');
-    const vidTitle = document.getElementById('vidTitle').textContent;
-    const existingTrack = videoPlayer.querySelector('track');
+  const file = event.target.files[0];
+  const videoPlayer = document.getElementById('videoPlayer');
+  const vidTitle = document.getElementById('vidTitle').textContent;
+  const existingTrack = videoPlayer.querySelector('track');
 
-    if (existingTrack) {
-        videoPlayer.removeChild(existingTrack);
-    }
+  if (existingTrack) {
+      videoPlayer.removeChild(existingTrack);
+  }
 
-    if (file) {
-        const subtitleURL = URL.createObjectURL(file);
-        const track = document.createElement('track');
-        track.kind = 'subtitles';
-        track.src = subtitleURL;
-        track.srclang = 'en';
-        track.label = 'English';
-        track.default = true;
-        videoPlayer.appendChild(track);
-        videoPlayer.textTracks[0].mode = 'showing';
-    }
+  if (file) {
+      const subtitleURL = URL.createObjectURL(file);
+      const track = document.createElement('track');
+      track.kind = 'subtitles';
+      track.src = subtitleURL;
+      track.srclang = 'en';
+      track.label = 'English';
+      track.default = true;
+      videoPlayer.appendChild(track);
+      videoPlayer.textTracks[0].mode = 'showing';
+  }
 });
 
 
 window.onkeydown = vidCtrl;
 
 function vidCtrl(e) {
-  const vid = document.getElementById('videoPlayer');
-  const key = e.code;
+const vid = document.getElementById('videoPlayer');
+const key = e.code;
 
-  if (key === 'ArrowLeft') {
-    vid.currentTime -= 5;
-    if (vid.currentTime < 0) {
-      vid.pause();
-      vid.currentTime = 0;
-    }
-  } else if (key === 'ArrowRight') {
-    vid.currentTime += 5;
-    if (vid.currentTime > vid.duration) {
-      vid.pause();
-      vid.currentTime = 0;
-    }
-  } else if (key === 'Space') {
-    if (vid.paused || vid.ended) {
-      vid.play();
-    } else {
-      vid.pause();
-    }
+if (key === 'ArrowLeft') {
+  vid.currentTime -= 5;
+  if (vid.currentTime < 0) {
+    vid.pause();
+    vid.currentTime = 0;
   }
+} else if (key === 'ArrowRight') {
+  vid.currentTime += 5;
+  if (vid.currentTime > vid.duration) {
+    vid.pause();
+    vid.currentTime = 0;
+  }
+} else if (key === 'Space') {
+  if (vid.paused || vid.ended) {
+    vid.play();
+  } else {
+    vid.pause();
+  }
+}
 }
 
 
 let hideTimeout;
 function hideElement() {
-    document.getElementById('details').style.opacity = '0';
+  document.getElementById('details').style.opacity = '0';
 }
 function showElement() {
-    clearTimeout(hideTimeout);
-    document.getElementById('details').style.opacity = '1';
+  clearTimeout(hideTimeout);
+  document.getElementById('details').style.opacity = '1';
 }
 document.getElementById('hover').addEventListener('mouseover', showElement);
 document.getElementById('hover').addEventListener('mouseout', () => {
-    hideTimeout = setTimeout(hideElement, 1000);
+  hideTimeout = setTimeout(hideElement, 1000);
 });
 hideTimeout = setTimeout(hideElement, 1000);
 
@@ -130,33 +130,34 @@ canvas.style.width = video.clientWidth + "px";
 canvas.style.height = video.clientHeight + "px";
 
 function getCurrentImage() {
-  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 }
 
 setInterval(getCurrentImage, 100);
 
 
 window.onload = function() {
-  var modal = document.getElementById("myModal");
-  var span = document.getElementsByClassName("close")[0];
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
 
-  setTimeout(function() {
-      modal.classList.add("show");
-  }, 1000);
+setTimeout(function() {
+    modal.style.display = "block";
+    modal.classList.add("show");
+}, 1000);
 
-  span.onclick = function() {
-      modal.classList.remove("show");
-      setTimeout(function() {
-          modal.style.display = "none";
-      }, 1000);
-  }
+span.onclick = function() {
+    modal.classList.remove("show");
+    setTimeout(function() {
+        modal.style.display = "none";
+    }, 1000);
+}
 
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.classList.remove("show");
-          setTimeout(function() {
-              modal.style.display = "none";
-          }, 1000);
-      }
-  }
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.classList.remove("show");
+        setTimeout(function() {
+            modal.style.display = "none";
+        }, 1000);
+    }
+}
 }
