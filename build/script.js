@@ -141,9 +141,12 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 
 setTimeout(function() {
-    modal.style.display = "block";
-    modal.classList.add("show");
+  modal.style.display = "block";
 }, 1000);
+
+setTimeout(function() {
+    modal.classList.add("show");
+}, 500);
 
 span.onclick = function() {
     modal.classList.remove("show");
