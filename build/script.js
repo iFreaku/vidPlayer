@@ -130,37 +130,51 @@ canvas.style.width = video.clientWidth + "px";
 canvas.style.height = video.clientHeight + "px";
 
 function getCurrentImage() {
-ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 }
 
 setInterval(getCurrentImage, 100);
 
 
 window.onload = function() {
-var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
+  var modal = document.getElementById("myModal");
+  var span = document.getElementsByClassName("close")[0];
 
-setTimeout(function() {
-  modal.style.display = "block";
-}, 0);
+  setTimeout(function() {
+    modal.style.display = "block";
+  }, 0);
 
-setTimeout(function() {
-    modal.classList.add("show");
-}, 600);
+  setTimeout(function() {
+      modal.classList.add("show");
+  }, 600);
 
-span.onclick = function() {
-    modal.classList.remove("show");
-    setTimeout(function() {
-        modal.style.display = "none";
-    }, 1000);
-}
+  span.onclick = function() {
+      modal.classList.remove("show");
+      setTimeout(function() {
+          modal.style.display = "none";
+      }, 1000);
+  }
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.classList.remove("show");
-        setTimeout(function() {
-            modal.style.display = "none";
-        }, 1000);
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.classList.remove("show");
+          setTimeout(function() {
+              modal.style.display = "none";
+          }, 1000);
+      }
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'm' || event.key === 'M') {
+      setTimeout(function() {
+        modal.style.display = "block";
+      }, 0);
+    
+      setTimeout(function() {
+          modal.classList.add("show");
+      }, 600);
     }
+  });
 }
-}
+
+
