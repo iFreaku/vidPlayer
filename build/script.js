@@ -142,13 +142,13 @@ window.onload = function() {
 
   setTimeout(function() {
       modal.classList.add("show");
-  }, 0);
+  }, 1000);
 
   span.onclick = function() {
       modal.classList.remove("show");
       setTimeout(function() {
           modal.style.display = "none";
-      }, 500);
+      }, 1000);
   }
 
   window.onclick = function(event) {
@@ -156,7 +156,7 @@ window.onload = function() {
           modal.classList.remove("show");
           setTimeout(function() {
               modal.style.display = "none";
-          }, 500);
+          }, 1000);
       }
   }
 }
