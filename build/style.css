@@ -183,3 +183,21 @@ canvas {
     outline: none;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.678);
 }
+
+
+button {
+    padding: 10px;
+    background-color: #535353;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.1s ease;
+}
+
+button:hover {
+    background-color: #3939396e;
+}
