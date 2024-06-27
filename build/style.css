@@ -32,7 +32,7 @@ video {
 
 .icon-button, .control-button {
     padding: 10px 20px;
-    background-color: #333;
+    background-color: #535353;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -42,10 +42,11 @@ video {
     gap: 10px;
     text-decoration: none;
     font-size: 16px;
+    transition: background-color 0.1s ease;
 }
 
 .icon-button:hover, .control-button:hover {
-    background-color: #5555556e;
+    background-color: #3939396e;
 }
 
 .icon-button i, .control-button i {
@@ -128,7 +129,7 @@ canvas {
 }
 
 .modal-content {
-    background-color: #ffffff26;
+    background-color: #ffffff14;
     margin: 15% auto;
     padding: 20px;
     width: 80%;
@@ -158,7 +159,6 @@ canvas {
 }
 
 
-
 .input-container {
     display: flex;
     justify-content: center;
@@ -166,35 +166,20 @@ canvas {
     margin-top: 20px;
 }
 
-.icon-button {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.icon-button:hover {
-    background-color: #0056b3;
-}
 
 .input-box {
     width: 100%;
     max-width: 400px;
     padding: 10px;
     margin: 10px 0;
-    border: 2px solid #007bff;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px;
+    border: none;
 }
 
 .input-box:focus {
-    border-color: #0056b3;
+    border: none;
     outline: none;
-    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.678);
 }
