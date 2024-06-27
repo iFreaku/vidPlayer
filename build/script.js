@@ -179,15 +179,17 @@ window.onload = function() {
 
 
 
-document.getElementById("upVid").addEventListener("click", function() {
+function vid(){
   var videoUrl = document.getElementById("vidUrl").value;
   setVideoSource(videoUrl);
-});
+  console.log("Video: "+videoUrl);
+}
 
-document.getElementById("upSub").addEventListener("click", function() {
+function subt(){
   var subtitleUrl = document.getElementById("subUrl").value;
   setSubtitleSource(subtitleUrl);
-});
+  console.log("Video: "+subtitleUrl);
+}
 
 function setVideoSource(url) {
   var videoPlayer = document.getElementById("videoPlayer");
