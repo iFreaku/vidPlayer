@@ -178,3 +178,36 @@ window.onload = function() {
 }
 
 
+
+document.getElementById("upVid").addEventListener("click", function() {
+  var videoUrl = document.getElementById("vidUrl").value;
+  setVideoSource(videoUrl);
+});
+
+document.getElementById("upSub").addEventListener("click", function() {
+  var subtitleUrl = document.getElementById("subUrl").value;
+  setSubtitleSource(subtitleUrl);
+});
+
+function setVideoSource(url) {
+  var videoPlayer = document.getElementById("videoPlayer");
+  videoPlayer.src = url;
+  videoPlayer.load();
+}
+
+function setSubtitleSource(url) {
+  var videoPlayer = document.getElementById("videoPlayer");
+  var track = videoPlayer.querySelector("track");
+
+  if (track) {
+    videoPlayer.removeChild(existingTrack);
+  }
+  track = document.createElement("track");
+  track.kind = 'subtitles';
+  track.srclang = 'en';
+  track.label = 'English';
+  track.default = true;
+  videoPlayer.appendChild(track);
+  videoPlayer.textTracks[0].mode = 'showing';
+  track.src = url;
+}
