@@ -168,7 +168,7 @@ canvas {
 
 
 .input-box {
-    width: 100%;
+    width: auto;
     max-width: 400px;
     padding: 10px;
     margin: 10px 0;
