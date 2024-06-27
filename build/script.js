@@ -146,7 +146,7 @@ window.onload = function() {
 
   setTimeout(function() {
       modal.classList.add("show");
-  }, 600);
+  }, 300);
 
   span.onclick = function() {
       modal.classList.remove("show");
@@ -172,7 +172,7 @@ window.onload = function() {
     
       setTimeout(function() {
           modal.classList.add("show");
-      }, 600);
+      }, 300);
     }
   });
 }
