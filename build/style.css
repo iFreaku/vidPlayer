@@ -124,7 +124,7 @@ canvas {
     background-color: rgb(2 2 2 / 40%);
     opacity: 0;
     transition: opacity 1s ease;
-     backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
 }
 
 .modal-content {
@@ -157,3 +157,44 @@ canvas {
     opacity: 1;
 }
 
+
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.icon-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background-color: #0056b3;
+}
+
+.input-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.input-box:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
