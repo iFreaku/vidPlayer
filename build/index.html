@@ -20,7 +20,7 @@
             </video>
         </div>
     </div>
-
+<!--
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -35,6 +35,34 @@
             </div>
         </div>
     </div>
+-->
+
+    <div id="myModal" class="modal show" style="display: block;">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <h2>Welcome to the Video Player!</h2>
+            <hr>
+            <p>Choose a video and subtitle file (optional) to get started.</p>
+            <div id="content" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;" class="input-container">
+                <input type="file" id="videoInput" accept="video/*" style="display: none;">
+                <label for="videoInput" class="icon-button"><i class="fas fa-video"></i> Choose Video</label>
+                
+                <input type="file" id="subtitleInput" accept=".vtt, .srt" style="display: none;">
+                <label for="subtitleInput" class="icon-button"><i class="fas fa-closed-captioning"></i> Choose Subtitle</label>
+            </div>
+            <br>
+            <h3>OR</h3>
+            <br>
+            <label for="vidUrl">Video URL:</label>
+            <input type="text" id="vidUrl" name="vidUrl" class="input-box">
+            <br><br>
+            <label for="subUrl">Subtitle URL:</label>
+            <input type="text" id="subUrl" name="subUrl" class="input-box">
+            <br><br>
+            <p style="text-align: right;">~ developed by iFreaku</p>
+        </div>
+    </div>
+    
 
     <script src="script.js"></script>
 </body>
