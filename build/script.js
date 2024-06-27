@@ -142,11 +142,11 @@ var span = document.getElementsByClassName("close")[0];
 
 setTimeout(function() {
   modal.style.display = "block";
-}, 1000);
+}, 0);
 
 setTimeout(function() {
     modal.classList.add("show");
-}, 2000);
+}, 600);
 
 span.onclick = function() {
     modal.classList.remove("show");
