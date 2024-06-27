@@ -191,13 +191,13 @@ function subt(){
   console.log("Subtitle: "+subtitleUrl);
   document.getElementById('vidTitle') = "";
   document.getElementById('vidDuration') = "";
-  document.title = "Video Player";
 }
 
 function setVideoSource(url) {
   var videoPlayer = document.getElementById("videoPlayer");
   videoPlayer.src = url;
   videoPlayer.load();
+  document.title = "Video Player";
 }
 
 function setSubtitleSource(url) {
