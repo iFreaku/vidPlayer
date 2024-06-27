@@ -188,7 +188,10 @@ function vid(){
 function subt(){
   var subtitleUrl = document.getElementById("subUrl").value;
   setSubtitleSource(subtitleUrl);
-  console.log("Video: "+subtitleUrl);
+  console.log("Subtitle: "+subtitleUrl);
+  document.getElementById('vidTitle') = "";
+  document.getElementById('vidDuration') = "";
+  document.title = "Video Player";
 }
 
 function setVideoSource(url) {
