@@ -146,7 +146,7 @@ setTimeout(function() {
 
 setTimeout(function() {
     modal.classList.add("show");
-}, 1000);
+}, 600);
 
 span.onclick = function() {
     modal.classList.remove("show");
