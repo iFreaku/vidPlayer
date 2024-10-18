@@ -256,3 +256,10 @@ button:hover {
 #fileList button:hover {
     background-color: #3939396e;
 }
+
+#folderTitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}

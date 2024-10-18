@@ -21,21 +21,27 @@ document.querySelector('.close-folder').onclick = function() {
 };
 
 document.getElementById('selectFolder').addEventListener('click', async function() {
-    try {
-        const folderHandle = await window.showDirectoryPicker();
-        fileHandles = [];
+  try {
+      const folderHandle = await window.showDirectoryPicker();
+      fileHandles = []; // Reset the list of files
 
-        for await (const entry of folderHandle.values()) {
-            if (entry.kind === 'file' && isValidVideoFile(entry.name)) {
-                fileHandles.push(entry);
-            }
-        }
+      // Display the folder name in the modal
+      const folderTitle = document.getElementById('folderTitle');
+      folderTitle.textContent = `Folder: ${folderHandle.name}`;
 
-        displayFileList();
-    } catch (error) {
-        console.error("Folder selection failed: ", error);
-    }
+      // Iterate through the folder to get video files
+      for await (const entry of folderHandle.values()) {
+          if (entry.kind === 'file' && isValidVideoFile(entry.name)) {
+              fileHandles.push(entry);
+          }
+      }
+
+      displayFileList();
+  } catch (error) {
+      console.error("Folder selection failed: ", error);
+  }
 });
+
 
 function displayFileList() {
     const fileListContainer = document.getElementById('fileList');
