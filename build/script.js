@@ -1,9 +1,10 @@
 let fileHandles = [];
-window.onkeydown = function(e) {
-    if (e.code === 'KeyV') {
-        openFolderModal();
-    }
-};
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'v' || event.key === 'V') {
+    openFolderModal();
+  }
+});
 
 function openFolderModal() {
     const folderModal = document.getElementById("folderModal");
