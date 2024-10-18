@@ -36,11 +36,16 @@ document.getElementById('selectFolder').addEventListener('click', async function
           }
       }
 
+      // Sort fileHandles by file name (case-insensitive)
+      fileHandles.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+
+      // Display the sorted list
       displayFileList();
   } catch (error) {
       console.error("Folder selection failed: ", error);
   }
 });
+
 
 
 function displayFileList() {
