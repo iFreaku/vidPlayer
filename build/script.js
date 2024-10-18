@@ -1,3 +1,80 @@
+let fileHandles = [];
+window.onkeydown = function(e) {
+    if (e.code === 'KeyV') {
+        openFolderModal();
+    }
+};
+
+function openFolderModal() {
+    const folderModal = document.getElementById("folderModal");
+    folderModal.style.display = "block";
+    folderModal.classList.add("show");
+}
+
+document.querySelector('.close-folder').onclick = function() {
+    const folderModal = document.getElementById("folderModal");
+    folderModal.classList.remove("show");
+    setTimeout(function() {
+        folderModal.style.display = "none";
+    }, 500);
+};
+
+document.getElementById('selectFolder').addEventListener('click', async function() {
+    try {
+        const folderHandle = await window.showDirectoryPicker();
+        fileHandles = [];
+
+        for await (const entry of folderHandle.values()) {
+            if (entry.kind === 'file' && isValidVideoFile(entry.name)) {
+                fileHandles.push(entry);
+            }
+        }
+
+        displayFileList();
+    } catch (error) {
+        console.error("Folder selection failed: ", error);
+    }
+});
+
+function displayFileList() {
+    const fileListContainer = document.getElementById('fileList');
+    fileListContainer.innerHTML = '';
+
+    fileHandles.forEach((fileHandle, index) => {
+        const fileButton = document.createElement('button');
+        fileButton.textContent = fileHandle.name;
+        fileButton.onclick = function() {
+            loadVideoFromFile(fileHandle);
+        };
+        fileListContainer.appendChild(fileButton);
+    });
+}
+
+function isValidVideoFile(fileName) {
+    const validExtensions = ['mp4', 'webm', 'ogg', 'mkv', 'mov'];
+    const fileExtension = fileName.split('.').pop().toLowerCase();
+    return validExtensions.includes(fileExtension);
+}
+
+async function loadVideoFromFile(fileHandle) {
+    const file = await fileHandle.getFile();
+    const videoPlayer = document.getElementById('videoPlayer');
+    const vidTitle = document.getElementById('vidTitle');
+    const vidDuration = document.getElementById('vidDuration');
+
+    const videoURL = URL.createObjectURL(file);
+    videoPlayer.src = videoURL;
+    videoPlayer.load();
+
+    vidTitle.textContent = file.name.split('.').slice(0, -1).join('.');
+    videoPlayer.onloadedmetadata = function() {
+        const duration = videoPlayer.duration;
+        const hours = Math.floor(duration / 3600);
+        const minutes = Math.floor((duration % 3600) / 60);
+        const seconds = Math.floor(duration % 60);
+        vidDuration.textContent = `Duration: ${hours}h ${minutes}m ${seconds}s`;
+    };
+}
 
 
 function loadVideo(video) {
